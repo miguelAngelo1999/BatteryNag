@@ -1,0 +1,11 @@
+# Build artifacts
+BatteryNag.app/
+*.o
+*.d
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcworkspace
+DerivedData/
+build/
