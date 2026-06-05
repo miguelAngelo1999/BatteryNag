@@ -20,13 +20,26 @@ struct BatteryNagApp: App {
                 .frame(width: 320, height: 400)
         } label: {
             HStack(spacing: 2) {
-                Image(systemName: batteryMonitor.menuBarIcon)
+                if let iconImage = loadMenuBarIcon() {
+                    Image(nsImage: iconImage)
+                } else {
+                    Image(systemName: batteryMonitor.menuBarIcon)
+                }
                 if batteryMonitor.isOnBattery {
                     Text("\(batteryMonitor.batteryLevel)%")
                 }
             }
         }
         .menuBarExtraStyle(.window)
+    }
+
+    private func loadMenuBarIcon() -> NSImage? {
+        guard let resourcePath = Bundle.main.resourcePath else { return nil }
+        let iconPath = resourcePath + "/MenuBarIcon.png"
+        guard let image = NSImage(contentsOfFile: iconPath) else { return nil }
+        image.size = NSSize(width: 18, height: 18)
+        image.isTemplate = true  // Adapts to light/dark menubar
+        return image
     }
 }
 
