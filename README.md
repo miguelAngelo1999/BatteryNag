@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="icon-512.png" width="200" alt="BatteryNag Icon">
+</p>
+
 # BatteryNag
 
 A lightweight macOS menubar app that aggressively warns you when your battery is low and force-sleeps the Mac at a critical threshold.
